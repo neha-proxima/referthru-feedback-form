@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Star Rating</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      type="text/css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.1/bodymovin.min.js"></script>
+  </head>
+  <body>
+    <div id="animationWindow" style="display: none;"></div>
+    <div class="column-2 w-col w-col-12">
+      <div class="form-block-2 w-form" style="height: 85vh">
+        <div>
+          <img width="120" src="https://referthru.com/Assets/Logo.png" />
+        </div>
+        <!-- <div class="tittle">
+          <span class="sname">StayWell Spa Service</span>
+          <span class="street">Hinjewadi</span>, <span class="city">Pune</span>
+          
+        </div> -->
+        <div class="tittle">Demo Coffee Service</div>
+        <br />
+        <div id="success">
+          <center>
+            <img
+              src="./assets/img/check.png"
+              width="60px"
+              hieght="60px"
+            /><br /><span
+              style="
+                font-size: 15px;
+                margin-top: 20px;
+                display: block;
+                font-weight: bold;
+              "
+              >Your Payment was successfull.</span
+            ><br /><span style="font-size: 14px"
+              >Thank you for your payment ₹ <span id="totalAmtval">1000</span> .
+              We will be in contact with more details shortly.</span
+            >
+          </center>
+
+          <br />
+          <form action="" id="referfeedbackform" onsubmit="signup(event)">
+            <label for="rate" class="field-label tittle_second success"
+              >How do you rate referThru platform?</label
+            >
+
+            <div class="form-field">
+              <select id="glsr-ltr" class="star-rating-old">
+                <option value="">Select a rating</option>
+                <option value="5">Fantastic</option>
+                <option value="4">Great</option>
+                <option value="3">Good</option>
+                <option value="2">Poor</option>
+                <option value="1">Terrible</option>
+              </select>
+            </div>
+
+            <label for="rate" class="field-label tittle_second success"
+              >Would you refer us to your family and friends?</label
+            >
+            <fieldset>
+              <div class="some-class" id="radio">
+                <div class="yes_label">
+                  <input
+                    type="radio"
+                    class="radio"
+                    value="true"
+                    id="yes"
+                    name="refer"
+                  />
+                  <label for="yes" class="field-label">Yes</label>
+                </div>
+
+                <div class="no_label">
+                  <input
+                    type="radio"
+                    class="radio"
+                    value="false"
+                    id="no"
+                    name="refer"
+                  />
+                  <label for="no" class="field-label">No</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <center>
+              <div class="form">
+                <div class="block_form" style="position: relative">
+                  <button
+                    type="button"
+                    class="submit-button w-button"
+                    id="submit-button"
+                  >
+                    Submit
+                  </button>
+                  <a
+                    href="https://app.referthru.com/#/login"
+                    class="submit-button w-button"
+                    id="skip-button"
+                  >
+                    Skip
+                  </a>
+                </div>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/star-rating.min.js"></script>
+      <script src="./assets/js/refer.js"></script>
+  </body>
+</html>

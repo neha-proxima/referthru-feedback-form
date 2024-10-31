@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Demo Coffee Service | referThru Service Feedback</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/x-icon" href="./assets/img/favicon-128x128.png">
+      <link rel="stylesheet" href="./assets/css/style.css" />
+      <link
+         rel="stylesheet"
+         href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+         type="text/css"
+         />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.1/bodymovin.min.js"></script>
+   </head>
+   <body>
+      <div id="animationWindow" style="display: none;">
+      </div>
+      <div class="column-2 w-col w-col-12">
+         <div class="form-block-2 w-form" id="home">
+            <div >
+               <img width="120" src="./assets/img/Logo.png" />
+            </div>
+            <div id="feedback-from">
+               <div class="tittle">
+                  <span class="sname">StayWell Spa Service</span>
+                  <span class="street">Hinjewadi</span>, <span class="city">Pune</span>
+               </div>
+               <form action="" id="referform">
+                  <p class="field-label" style="font-size: 17px">
+                     Pay to win instant cash back*
+                  </p>
+                  <div class="form">
+                     <div class="block_form" style="position: relative">
+                        <label for="phone" class="field-label name_align">Mobile No</label>
+                        <div class="input-container">
+                           <div class="country-code">+91</div>
+                           <input class="w-input phone-input" name="phone" id="phone" type="tel" placeholder="Your Mobile No" onkeypress="allowNumbersOnly(event)" maxlength="10" minlength="10" required="">
+                           <div id="errorPhone"></div>
+                        </div>
+                     </div>
+                     <!-- <div class="block_form" style="position: relative">
+                        <label for="upid" class="field-label name_align">UPI Id</label>
+                        <div class="input-container">
+                           <input class="w-input" name="upid" id="upid" type="text" placeholder="UPI Id" minlength="10" required="">
+                           <div id="errorUpi"></div>
+                        </div>
+                     </div> -->
+                     <div class="block_form" style="position: relative">
+                        <label for="amount" class="field-label name_align">Amount</label>
+                        <div class="input-container">
+                           <input class="w-input" name="amount" id="amount" type="number" placeholder="Amount to be paid"   required="">
+                           <div id="errorAmount"></div>
+                        </div>
+                     </div>
+                     <div class="block_form" style="position: relative;padding:10px 0px 12px 0px;">
+                        *Terms and conditions apply.
+                        Visit
+                        <a href="https://app.referthru.com/#/support/terms-conditions" target="_blank">app.referthru.com</a>
+                     </div>
+                     <div class="block_form" style="position: relative"><button type="button" class="submit-button w-button" id="next" disabled>
+                     Next
+                     </button></div>
+                  </div>
+               </form>
+            </div>
+            <div style="text-align: left; display: none " id="feedback-from-detail">
+               <center class="amountpay" style="font-size: 25px;"><span style="color: #21BA45;">₹</span> <span class="totalamt">120</span></center>
+               <div class="tittle" style="font-size: 15px;">
+                  <span class="sname">StayWell Spa Service</span>
+                  <span class="street">Hinjewadi</span>, <span class="city">Pune</span>
+               </div>
+               
+               <div class="paymentdetail">Your cashback: <span style="color: #21BA45;">₹<strong id ="usersplit">2.40</strong></span></div>
+               <div class="paymentdetail">Your Mobile: <strong>+91 <span id="paymobile">9958791445</span></strong></div>
+               <!-- <div class="paymentdetail">Your UPI Id: <strong><span id="payupi">johndoe@okhdfcbank</span></strong> </div> -->
+               <div class="q-card__actions justify-start q-card__actions--horiz row">
+                  <div class="q-pa-xs q-pl-sm q-gutter-lg">
+                     <ul class="paymenttype">
+                     
+                  
+                        <li><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round " tabindex="-1" type="button"  style="font-size: 20px;" onclick=" openPaymentApp('GPAY')"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><span class="q-icon" aria-hidden="true" role="img"><img src="./assets/img/gpay.png"></span></span></button></li>
+                     
+                  <li><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round " tabindex="-1" type="button"  style="font-size: 20px;" onclick=" openPaymentApp('WHATSAPP')"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><span class="q-icon" aria-hidden="true" role="img"><img src="./assets/img/whatsapp.webp"></span></span></button></li>
+               
+                     <li><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round " tabindex="-1" type="button"  style="font-size: 20px;" onclick=" openPaymentApp('PHONEPE')"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><span class="q-icon" aria-hidden="true" role="img"><img src="./assets/img/phonpe.jfif"></span></span>
+                     </button></li>
+                     <li><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round " tabindex="-1" type="button"   style="font-size: 20px;" onclick=" openPaymentApp('PAYTM')"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><span class="q-icon" aria-hidden="true" role="img"><img src="./assets/img/paytm.webp"></span></span>
+                     </button></li>
+                  </ul>
+                  <div style="text-align: center;" id="paynowbtn">
+                  <button type="submit" class="submit-button w-button" id="pay-button" disabled="disabled" onclick="addUser()">Pay Now</button>
+               <a href ="#"
+                  class="submit-button w-button"
+                  id="back"
+                  >
+               Back
+               </a>
+            </div>
+                  </div>
+                  
+               </div>
+              
+               
+            </div>
+         </div>
+      </div>
+      
+      <script src="./assets/js/star-rating.min.js"></script>
+      <script src="./assets/js/refer.js"></script>
+   </body>
+</html>
